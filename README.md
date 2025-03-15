@@ -13,6 +13,8 @@ Medical coding is a critical process in healthcare that involves translating cli
 - Provide explanations for code predictions
 - Support for batch processing of clinical documents
 - AWS SageMaker integration for scalable deployment
+- **NEW:** Context-aware predictions based on clinical text analysis
+- **NEW:** Interactive web interface for instant predictions
 
 ## Technical Architecture
 
@@ -21,6 +23,35 @@ Medical coding is a critical process in healthcare that involves translating cli
 - **Code Prediction Model**: Fine-tuned BioBERT model for medical code prediction
 - **Evaluation Module**: Performance metrics and explanation of code predictions
 - **AWS Integration**: Deployment to SageMaker for scalable inference
+- **NEW:** FastAPI Web Service: REST API with HTML interface for user-friendly access
+- **NEW:** Keyword Analysis: Context-based prediction system that identifies medical scenarios
+
+## Interactive Web Interface
+
+The project now includes a user-friendly web interface that allows users to:
+
+1. Enter clinical notes in a text area
+2. Submit the text for analysis with a single click
+3. View predicted ICD-10 and CPT codes with confidence scores
+4. Receive context-aware predictions based on the clinical scenario
+
+### Accessing the Web Interface
+
+Once running, access the web interface at:
+- http://localhost:8000 (redirects to UI)
+- http://localhost:8000/ui
+- http://localhost:8000/ui2
+
+### Context-Aware Predictions
+
+The system now analyzes clinical notes for keywords related to different medical specialties and conditions:
+
+- **Cardiac conditions**: Chest pain, shortness of breath, heart failure, etc.
+- **Neurological conditions**: Headaches, migraines, seizures, etc.
+- **Respiratory conditions**: Pneumonia, COPD, asthma, cough, etc.
+- **Stroke symptoms**: Facial droop, weakness, slurred speech, etc.
+- **Gastrointestinal issues**: Abdominal pain, GERD, nausea, etc.
+- **General examination**: Default codes when no specific condition is detected
 
 ## Getting Started
 
@@ -48,18 +79,31 @@ pip install -r requirements.txt
 ### Local Usage
 
 ```bash
-# Run the demo script with a sample clinical note
-python scripts/demo.py data/raw/sample_clinical_note.txt
+# Run the FastAPI application
+python app.py
 ```
+
+Then, you can access the web interface at http://localhost:8000
 
 ### API Usage
 
-```bash
-# Run the FastAPI application
-python scripts/run_api.py
-```
+The API can be accessed programmatically:
 
-Then, you can access the API documentation at http://localhost:8000/docs
+```python
+import requests
+import json
+
+url = "http://localhost:8000/predict"
+clinical_note = "68-year-old male presenting with chest pain and shortness of breath for the past 2 days."
+
+response = requests.post(
+    url,
+    json={"text": clinical_note}
+)
+
+predictions = response.json()
+print(json.dumps(predictions, indent=2))
+```
 
 ### AWS SageMaker Deployment
 
@@ -77,11 +121,7 @@ python scripts/setup_aws_credentials.py --access-key YOUR_ACCESS_KEY --secret-ke
 python scripts/deploy_to_sagemaker.py --model-path models/medical_code_prediction.tar.gz --s3-bucket your-bucket-name --role-arn YOUR_ROLE_ARN
 ```
 
-3. Invoke the SageMaker endpoint:
-
-```bash
-python scripts/invoke_endpoint.py --file data/raw/sample_clinical_note.txt --endpoint-name medical-code-prediction
-```
+3. Update the app.py configuration to point to your SageMaker endpoint
 
 For more detailed instructions on AWS integration, see [AWS Integration Guide](docs/aws_integration.md).
 
@@ -105,23 +145,36 @@ For more detailed instructions on AWS integration, see [AWS Integration Guide](d
 
 ```
 medical-code-prediction/
-├── data/                  # Data directory
-│   ├── raw/               # Raw clinical text data
-│   ├── processed/         # Preprocessed data
-│   └── reference/         # ICD-10 and CPT code reference data
-├── notebooks/             # Jupyter notebooks for exploration and development
-├── src/                   # Source code
-│   ├── preprocessing/     # Text preprocessing modules
-│   ├── models/            # Model definition and training
-│   ├── evaluation/        # Evaluation metrics and analysis
-│   ├── api/               # API implementation
-│   └── utils/             # Utility functions
-├── tests/                 # Unit and integration tests
-├── configs/               # Configuration files
-├── app/                   # Web interface
-├── scripts/               # Utility scripts
-└── docs/                  # Documentation
+├── app.py                # FastAPI application (NEW)
+├── ui.html               # Web interface template (NEW)
+├── static/               # Static files directory (NEW)
+│   └── index.html        # Alternative web interface (NEW)
+├── data/                 # Data directory
+│   ├── raw/              # Raw clinical text data
+│   ├── processed/        # Preprocessed data
+│   └── reference/        # ICD-10 and CPT code reference data
+├── notebooks/            # Jupyter notebooks for exploration and development
+├── src/                  # Source code
+│   ├── preprocessing/    # Text preprocessing modules
+│   ├── models/           # Model definition and training
+│   ├── evaluation/       # Evaluation metrics and analysis
+│   ├── api/              # API implementation
+│   └── utils/            # Utility functions
+├── tests/                # Unit and integration tests
+├── configs/              # Configuration files
+├── scripts/              # Utility scripts
+└── docs/                 # Documentation
 ```
+
+## Recent Updates
+
+- Added context-aware predictions based on clinical scenario
+- Implemented a user-friendly web interface
+- Added multiple UI access points
+- Improved error handling and logging
+- Added fallback to mock predictions when SageMaker is unavailable
+- Enhanced performance with connection timeouts and caching
+- Improved UI styling and responsive design
 
 ## Future Work
 
@@ -129,7 +182,7 @@ medical-code-prediction/
 - Fine-tune BioBERT for medical code prediction
 - Develop a more sophisticated confidence scoring mechanism
 - Implement comprehensive evaluation metrics
-- Create a web interface for the prediction system
+- Add support for more medical coding systems (e.g., ICD-11, SNOMED-CT)
 
 ## License
 

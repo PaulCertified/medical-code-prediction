@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Code Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #results {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            display: none;
+        }
+        .code-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .confidence {
+            float: right;
+            color: #7f8c8d;
+        }
+        .loading {
+            text-align: center;
+            margin: 30px 0;
+            display: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            textarea {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Medical Code Prediction</h1>
+    <p>Enter a clinical note below to predict ICD-10 and CPT codes:</p>
+    
+    <textarea id="clinical-note">68-year-old male presenting with chest pain and shortness of breath for the past 2 days. Patient has a history of hypertension and type 2 diabetes. ECG shows ST depression in leads V3-V5. Troponin I elevated at 0.8 ng/mL.</textarea>
+    
+    <br>
+    <button id="predict-button" onclick="predictCodes()">Predict Codes</button>
+    
+    <div id="loading" class="loading">
+        <p>Processing...</p>
+    </div>
+    
+    <div id="results">
+        <h2>Predicted Codes:</h2>
+        <div id="icd10-codes">
+            <h3>ICD-10 Codes:</h3>
+            <div id="icd10-list"></div>
+        </div>
+        <div id="cpt-codes">
+            <h3>CPT Codes:</h3>
+            <div id="cpt-list"></div>
+        </div>
+    </div>
+
+    <script>
+        function predictCodes() {
+            const clinicalNote = document.getElementById('clinical-note').value;
+            
+            if (!clinicalNote.trim()) {
+                alert('Please enter a clinical note');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: clinicalNote })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                
+                // Process results
+                const icd10List = document.getElementById('icd10-list');
+                const cptList = document.getElementById('cpt-list');
+                
+                icd10List.innerHTML = '';
+                cptList.innerHTML = '';
+                
+                if (data.predictions && data.predictions.length > 0) {
+                    data.predictions.forEach(code => {
+                        const codeItem = document.createElement('div');
+                        codeItem.className = 'code-item';
+                        
+                        const confidence = document.createElement('span');
+                        confidence.className = 'confidence';
+                        confidence.textContent = `Confidence: ${(code.confidence * 100).toFixed(1)}%`;
+                        
+                        codeItem.innerHTML = `<strong>${code.code}</strong>: ${code.description}`;
+                        codeItem.appendChild(confidence);
+                        
+                        if (code.type === 'ICD-10') {
+                            icd10List.appendChild(codeItem);
+                        } else if (code.type === 'CPT') {
+                            cptList.appendChild(codeItem);
+                        }
+                    });
+                } else {
+                    // Handle unexpected response format
+                    const errorMsg = document.createElement('p');
+                    errorMsg.textContent = 'No predictions found in response';
+                    icd10List.appendChild(errorMsg.cloneNode(true));
+                    cptList.appendChild(errorMsg);
+                    console.error('Unexpected response format:', data);
+                }
+                
+                // Show results
+                document.getElementById('results').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while making the prediction. Please try again.');
+                document.getElementById('loading').style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html> 
