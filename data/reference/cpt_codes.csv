@@ -1,0 +1,66 @@
+code,description
+99221,Initial hospital care per day level 1
+99222,Initial hospital care per day level 2
+99223,Initial hospital care per day level 3
+99231,Subsequent hospital care per day level 1
+99232,Subsequent hospital care per day level 2
+99233,Subsequent hospital care per day level 3
+99291,Critical care first hour
+99292,Critical care each additional 30 minutes
+99238,Hospital discharge day management 30 minutes or less
+99239,Hospital discharge day management more than 30 minutes
+93000,Electrocardiogram complete
+93005,Electrocardiogram tracing only
+93010,Electrocardiogram report
+93306,Echocardiography complete with spectral and color flow Doppler
+93307,Echocardiography without spectral or color flow Doppler
+93320,Doppler echocardiography complete
+93325,Color flow Doppler echocardiography
+93350,Stress echocardiography
+93452,Left heart catheterization
+93453,Right and left heart catheterization
+93454,Coronary angiography
+93455,Coronary angiography with left ventricular angiography
+93456,Coronary angiography with right heart catheterization
+93457,Coronary angiography with left ventricular angiography and right heart catheterization
+93458,Left heart catheterization with coronary angiography
+93459,Left heart catheterization with coronary angiography and left ventricular angiography
+93460,Right and left heart catheterization with coronary angiography
+93461,Right and left heart catheterization with coronary angiography and left ventricular angiography
+92920,Percutaneous transluminal coronary angioplasty single major coronary artery or branch
+92921,Percutaneous transluminal coronary angioplasty each additional branch
+92928,Percutaneous transcatheter placement of intracoronary stent single major coronary artery or branch
+92929,Percutaneous transcatheter placement of intracoronary stent each additional branch
+71045,Chest X-ray single view
+71046,Chest X-ray 2 views
+71047,Chest X-ray 3 views
+71048,Chest X-ray 4 or more views
+78451,Myocardial perfusion imaging SPECT single study
+78452,Myocardial perfusion imaging SPECT multiple studies
+78453,Myocardial perfusion imaging planar single study
+78454,Myocardial perfusion imaging planar multiple studies
+80048,Basic metabolic panel
+80050,General health panel
+80051,Electrolyte panel
+80053,Comprehensive metabolic panel
+80061,Lipid panel
+80076,Hepatic function panel
+82803,Blood gases any combination
+82805,Blood gases with O2 saturation
+82810,Blood gases with O2 saturation by pulse oximetry
+84484,Troponin quantitative
+84512,Troponin qualitative
+85025,Complete CBC with auto diff WBC
+85027,Complete CBC auto
+85610,Prothrombin time
+85730,Partial thromboplastin time
+96360,IV infusion hydration initial 31 minutes to 1 hour
+96361,IV infusion hydration each additional hour
+96365,IV infusion therapy initial up to 1 hour
+96366,IV infusion therapy each additional hour
+96367,IV infusion therapy additional sequential infusion up to 1 hour
+96368,IV infusion therapy concurrent infusion
+96372,Therapeutic prophylactic or diagnostic injection subcutaneous or intramuscular
+96374,IV push single or initial substance/drug
+96375,IV push each additional sequential substance/drug
+96376,IV push same substance/drug additional push 

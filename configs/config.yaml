@@ -1,0 +1,90 @@
+# Configuration for Medical Code Prediction System
+
+# Data paths
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  reference_dir: "data/reference"
+  
+  # Sample data files (to be updated with actual data)
+  clinical_notes: "data/raw/clinical_notes.csv"
+  icd10_codes: "data/reference/icd10_codes.csv"
+  cpt_codes: "data/reference/cpt_codes.csv"
+  
+# Preprocessing settings
+preprocessing:
+  lowercase: true
+  remove_punctuation: false
+  expand_abbreviations: true
+  max_length: 512
+
+# NER settings
+ner:
+  model: "biobert-base-cased-v1.1"
+  labels:
+    - "DIAGNOSIS"
+    - "PROCEDURE"
+    - "MEDICATION"
+    - "SYMPTOM"
+    - "ANATOMY"
+    - "TEST"
+    - "TREATMENT"
+  threshold: 0.5
+
+# Model settings
+model:
+  name: "biobert-base-cased-v1.1"
+  max_length: 512
+  batch_size: 16
+  learning_rate: 2e-5
+  epochs: 5
+  warmup_steps: 500
+  weight_decay: 0.01
+  dropout: 0.1
+
+# Training settings
+training:
+  train_test_split: 0.8
+  validation_split: 0.1
+  seed: 42
+  early_stopping_patience: 3
+  gradient_accumulation_steps: 1
+  fp16: true
+  logging_steps: 100
+  save_steps: 1000
+  evaluation_strategy: "steps"
+
+# Prediction settings
+prediction:
+  threshold: 0.5
+  top_k: 5
+  batch_size: 32
+
+# Paths
+paths:
+  train_data: "data/processed/train.csv"
+  test_data: "data/processed/test.csv"
+  model_output: "models/"
+  logs: "logs/"
+  icd10_codes: "data/reference/icd10_codes.csv"
+  cpt_codes: "data/reference/cpt_codes.csv"
+
+# Evaluation settings
+evaluation:
+  metrics:
+    - "precision"
+    - "recall"
+    - "f1"
+    - "accuracy"
+  confidence_threshold: 0.5
+  
+# API settings
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+  
+# AWS SageMaker settings
+sagemaker:
+  instance_type: "ml.m5.xlarge"
+  region: "us-west-2" 

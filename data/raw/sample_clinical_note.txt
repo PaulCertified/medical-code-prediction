@@ -1,0 +1,101 @@
+CLINICAL NOTE
+Date: 2023-03-14
+Patient: John Smith
+MRN: 12345678
+DOB: 1955-05-15 (68 years)
+Gender: Male
+
+CHIEF COMPLAINT:
+Chest pain and shortness of breath
+
+HISTORY OF PRESENT ILLNESS:
+Mr. Smith is a 68-year-old male with a history of hypertension, hyperlipidemia, and type 2 diabetes mellitus who presents to the emergency department with a 2-hour history of substernal chest pain and shortness of breath. The pain is described as pressure-like, radiating to the left arm, rated 8/10 in severity. The pain started while he was watching television and has been constant since onset. It is associated with diaphoresis and nausea. He denies vomiting, syncope, or palpitations. He took one sublingual nitroglycerin at home with minimal relief.
+
+PAST MEDICAL HISTORY:
+1. Hypertension, diagnosed 15 years ago
+2. Hyperlipidemia, diagnosed 12 years ago
+3. Type 2 diabetes mellitus, diagnosed 10 years ago
+4. Chronic kidney disease, stage 2
+5. History of GERD
+
+MEDICATIONS:
+1. Lisinopril 20mg daily
+2. Metformin 1000mg twice daily
+3. Atorvastatin 40mg daily
+4. Aspirin 81mg daily
+5. Nitroglycerin 0.4mg SL PRN chest pain
+6. Omeprazole 20mg daily
+
+ALLERGIES:
+Penicillin (rash)
+
+SOCIAL HISTORY:
+Former smoker, quit 5 years ago after 30 pack-year history. Occasional alcohol use. Retired construction worker. Lives with wife.
+
+FAMILY HISTORY:
+Father died of myocardial infarction at age 62. Mother had stroke at age 70. Brother with coronary artery disease, status post CABG at age 65.
+
+REVIEW OF SYSTEMS:
+Constitutional: Denies fever, chills, or recent weight changes.
+Cardiovascular: Chest pain as described above. Denies palpitations or lower extremity edema.
+Respiratory: Shortness of breath with exertion. Denies cough or hemoptysis.
+Gastrointestinal: Nausea. Denies vomiting, abdominal pain, or changes in bowel habits.
+Genitourinary: Denies dysuria, hematuria, or urinary frequency.
+Neurological: Denies headache, dizziness, or focal weakness.
+
+PHYSICAL EXAMINATION:
+Vital Signs: BP 165/95, HR 92, RR 20, Temp 98.6°F, SpO2 94% on room air
+General: Alert, oriented, in moderate distress due to chest pain
+HEENT: Normocephalic, atraumatic. Pupils equal, round, reactive to light. Oropharynx clear.
+Neck: No JVD, no carotid bruits, no lymphadenopathy
+Cardiovascular: Regular rate and rhythm, S1 and S2 normal, no murmurs, rubs, or gallops
+Respiratory: Bilateral breath sounds clear, no wheezes, rales, or rhonchi
+Abdomen: Soft, non-tender, non-distended, normal bowel sounds
+Extremities: No edema, pulses 2+ and equal bilaterally
+Skin: Warm, diaphoretic
+Neurological: Alert and oriented x3, cranial nerves II-XII intact, motor strength 5/5 in all extremities, sensation intact
+
+LABORATORY DATA:
+CBC: WBC 9.2, Hgb 13.5, Hct 40.2, Plt 245
+BMP: Na 138, K 4.2, Cl 102, CO2 24, BUN 22, Cr 1.3, Glucose 165
+Cardiac enzymes: Troponin I 0.15 ng/mL (elevated), CK-MB 8.2 ng/mL
+Lipid panel: Total cholesterol 210, LDL 130, HDL 35, Triglycerides 180
+HbA1c: 7.8%
+BNP: 320 pg/mL (elevated)
+PT/INR: 12.1/1.0
+PTT: 30 seconds
+
+IMAGING:
+Chest X-ray: No acute cardiopulmonary process. No pulmonary edema or pneumonia.
+ECG: Normal sinus rhythm, 1mm ST depression in leads V3-V6, T wave inversions in leads II, III, aVF
+
+ASSESSMENT AND PLAN:
+1. Acute coronary syndrome, likely NSTEMI
+   - Admit to CCU for monitoring
+   - Aspirin 325mg PO now, then 81mg daily
+   - Clopidogrel 300mg loading dose, then 75mg daily
+   - Atorvastatin increase to 80mg daily
+   - Metoprolol 25mg PO BID
+   - Heparin drip per ACS protocol
+   - Cardiology consult for possible cardiac catheterization
+   - Serial cardiac enzymes and ECGs
+
+2. Hypertension
+   - Continue lisinopril 20mg daily
+   - Add amlodipine 5mg daily
+   - Goal BP < 140/90
+
+3. Type 2 diabetes mellitus
+   - Continue metformin 1000mg BID
+   - Blood glucose monitoring q6h while inpatient
+   - Endocrinology consult for diabetes management
+
+4. Chronic kidney disease, stage 2
+   - Monitor renal function
+   - Adjust medications as needed based on renal function
+
+5. GERD
+   - Continue omeprazole 20mg daily
+
+DISPOSITION:
+Patient admitted to CCU for further management of NSTEMI. Cardiology consulted for possible cardiac catheterization tomorrow morning. Patient and family informed of diagnosis, treatment plan, and prognosis. All questions answered. 
